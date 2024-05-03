@@ -15,11 +15,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/prime-ng-dashboard",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -51,9 +51,12 @@
               "outputHashing": "all"
             },
             "development": {
+              "buildOptimizer": false,
               "optimization": false,
+              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
@@ -62,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "prime-ng-dashboard:build:production"
+              "browserTarget": "prime-ng-dashboard:build:production"
             },
             "development": {
-              "buildTarget": "prime-ng-dashboard:build:development"
+              "browserTarget": "prime-ng-dashboard:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "prime-ng-dashboard:build"
+            "browserTarget": "prime-ng-dashboard:build"
           }
         },
         "test": {
@@ -99,6 +102,6 @@
     }
   },
   "cli": {
-    "analytics": "ca58dab7-5ae6-4078-abcd-29089c4858f4"
+    "analytics": "c02b705d-7ef4-4838-b355-1aec76e19f13"
   }
 }
